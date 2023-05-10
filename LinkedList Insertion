@@ -1,0 +1,34 @@
+void InsertAtHead(Node* &head,int d){
+    Node* temp = new Node(d) ;
+    temp->next = head;
+    head = temp ;
+}
+
+void InsertAtTail(Node* &tail,int d){
+    Node* temp = new Node(d);
+    tail->next = temp ;
+    tail = temp ;
+}
+
+void InsertAtPos(Node* &head,Node* &tail , int pos , int d){
+    if(pos==1){
+        InsertAtHead(head,d);
+        return ;
+    }
+
+    Node* temp = head ;
+    int cnt=1 ;
+    while(cnt<pos-1){
+        temp->next=temp ;
+        cnt++;
+    }
+
+    if(temp->next==NULL){
+        InsertAtTail(tail,d);
+        return ;
+    }
+
+    Node* nodetoInsert = new Node(d) ;
+    nodetoInsert->next=temp->next ;
+    temp->next=nodetoInsert ;
+}
